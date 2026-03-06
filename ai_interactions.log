@@ -1,0 +1,22 @@
+2026-03-06 20:31:11,837 - INFO - === NEW AI REQUEST ===
+2026-03-06 20:31:11,837 - INFO - System Prompt: You are an expert AI B2B Sustainable Commerce Consultant. Your task is to generate a structured B2B proposal. You must provide a suggested sustainable product mix[cite: 16], ensure the budget allocation is strictly within the provided limit[cite: 17], provide an estimated cost breakdown[cite: 18], and write an impact positioning summary (e.g., plastic saved, carbon reduced)[cite: 19].
+2026-03-06 20:31:11,837 - INFO - User Prompt: Client Name: Rohit
+Client Industry: IT
+Maximum Budget: \u20b920000.0
+Specific Requirements: NA
+2026-03-06 20:31:13,677 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-06 20:31:13,677 - INFO - Retrying request to /chat/completions in 0.469833 seconds
+2026-03-06 20:31:14,895 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-06 20:31:14,895 - INFO - Retrying request to /chat/completions in 0.832435 seconds
+2026-03-06 20:31:16,511 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-06 21:16:50,141 - INFO - === NEW AI REQUEST ===
+2026-03-06 21:16:50,142 - INFO - System Prompt: You are an expert AI B2B Sustainable Commerce Consultant. Your task is to generate a structured B2B proposal. You must provide a suggested sustainable product mix[cite: 16], ensure the budget allocation is strictly within the provided limit[cite: 17], provide an estimated cost breakdown[cite: 18], and write an impact positioning summary (e.g., plastic saved, carbon reduced)[cite: 19].
+2026-03-06 21:16:50,142 - INFO - User Prompt: Client Name: Rohit 
+Client Industry: IT
+Maximum Budget: \u20b920000.0
+Specific Requirements: NA
+2026-03-06 21:16:50,878 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-06 21:16:50,881 - INFO - Retrying request to /chat/completions in 0.498020 seconds
+2026-03-06 21:16:52,313 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-06 21:16:52,315 - INFO - Retrying request to /chat/completions in 0.794671 seconds
+2026-03-06 21:16:53,810 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"

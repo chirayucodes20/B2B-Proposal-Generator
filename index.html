@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayeva AI | Proposal Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white min-h-screen font-sans antialiased p-6">
+    
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+            <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mb-2">Rayeva AI</h1>
+            <p class="text-gray-400">Sustainable B2B Proposal Generator</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-800/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-700">
+                <h2 class="text-xl font-bold mb-4 text-green-400">Client Details</h2>
+                
+                <label class="block mb-2 text-sm text-gray-300">Client Name</label>
+                <input type="text" id="client_name" class="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 mb-4 text-white focus:outline-none focus:border-green-500" placeholder="e.g. TechNova">
+                
+                <label class="block mb-2 text-sm text-gray-300">Industry</label>
+                <input type="text" id="industry" class="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 mb-4 text-white focus:outline-none focus:border-green-500" placeholder="e.g. IT Software">
+                
+                <label class="block mb-2 text-sm text-gray-300">Budget (₹)</label>
+                <input type="number" id="budget" class="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 mb-4 text-white focus:outline-none focus:border-green-500" placeholder="50000">
+                
+                <label class="block mb-2 text-sm text-gray-300">Specific Requirements</label>
+                <textarea id="requirements" class="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 mb-6 text-white focus:outline-none focus:border-green-500" rows="3" placeholder="e.g. Need plastic-free corporate gifts"></textarea>
+                
+                <button onclick="generateProposal()" id="genBtn" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 shadow-lg shadow-green-500/30">
+                    Generate Proposal ✨
+                </button>
+            </div>
+
+            <div class="bg-gray-800/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-700 h-full flex flex-col">
+                <h2 class="text-xl font-bold mb-4 text-green-400">AI Generated Result</h2>
+                <div id="loading" class="hidden text-center py-10 text-gray-400 animate-pulse">
+                    Generating sustainable insights...
+                </div>
+                <div id="output" class="text-sm text-gray-300 overflow-y-auto max-h-[400px] whitespace-pre-wrap font-mono bg-gray-900 p-4 rounded-lg border border-gray-700 hidden">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function generateProposal() {
+            const btn = document.getElementById('genBtn');
+            const loading = document.getElementById('loading');
+            const output = document.getElementById('output');
+            
+            // Get values
+            const data = {
+                client_name: document.getElementById('client_name').value,
+                industry: document.getElementById('industry').value,
+                budget: parseFloat(document.getElementById('budget').value),
+                requirements_note: document.getElementById('requirements').value
+            };
+
+            // UI changes while loading
+            btn.innerText = "Processing...";
+            btn.disabled = true;
+            output.classList.add('hidden');
+            loading.classList.remove('hidden');
+
+            try {
+                // Call our FastAPI Backend
+                const response = await fetch('/api/generate-proposal', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                // Show result beautifully
+                loading.classList.add('hidden');
+                output.classList.remove('hidden');
+                output.innerText = JSON.stringify(result, null, 2);
+                
+            } catch (error) {
+                loading.classList.add('hidden');
+                output.classList.remove('hidden');
+                output.innerText = "Error: Something went wrong. Check terminal!";
+            } finally {
+                btn.innerText = "Generate Proposal ✨";
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
